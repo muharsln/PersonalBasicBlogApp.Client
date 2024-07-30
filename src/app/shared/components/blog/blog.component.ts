@@ -1,19 +1,24 @@
 import { Component } from '@angular/core';
 import { PostService } from '../../../features/post/services/post.service';
+import { Post } from '../../../features/post/models/post.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
 })
 export class BlogComponent {
-  constructor(private postService: PostService) {}
+  Posts: Post[] = [];
+  constructor(private postService: PostService) {
+    this.getAllPosts();
+  }
 
   getAllPosts() {
     this.postService.getAll().subscribe(posts => {
-      // Handle the retrieved posts here
+      this.Posts = posts;
     });
   }
 }

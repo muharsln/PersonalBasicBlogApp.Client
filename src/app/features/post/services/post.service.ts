@@ -16,16 +16,12 @@ export class PostService {
     return this.http.get<Post[]>(this.apiUrl);
   }
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.apiUrl);
-  }
-
   addPost(post: Post): Observable<Post> {
     return this.http.post<Post>(this.apiUrl, post);
   }
 
-  deletePost(post: Post): Observable<void> {
-    const url = `${this.apiUrl}/${post.id}`;
-    return this.http.delete<void>(url);
-  }
+  // deletePost(post: Post): Observable<void> {
+  //   const url = `${this.apiUrl}/${post.id}`;
+  //   return this.http.delete<void>(url);
+  // }
 }
